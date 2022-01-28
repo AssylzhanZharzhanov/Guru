@@ -1,16 +1,24 @@
 package api
 
 import (
+	"github.com/spf13/viper"
 	"gitlab.com/zharzhanov/myguru/app"
 	"log"
 )
 
 func main(){
 
-	srv := new(app.App)
+	viper.AddConfigPath("configs")
+	viper.SetConfigName("config")
+	err := viper.ReadInConfig()
+	if err != nil {
+		log.Fatalf("Error in reading env file: %s", err.Error())
+	}
 
-	//port := os.Getenv("port")
-	port := "8000"
+	srv := new(app.Server)
+
+	port := viper.GetString("server.port")
+	log.Println(port)
 	if err := srv.Run(port); err != nil {
 		log.Fatalf("Error in starting server: %s", err.Error())
 	}

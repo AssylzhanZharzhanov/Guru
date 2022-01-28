@@ -21,7 +21,7 @@ services:
       context: ./
       dockerfile: ./Dockerfile
     env_file:
-      - ./configs/config.env
+      - configs/config.yml
     volumes:
       - ./:/app:z
     depends_on:

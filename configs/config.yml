@@ -1,0 +1,7 @@
+server:
+    port: 8000
+database:
+    dbName: postgres
+    dbuser: postgres
+    dbpassword: postgres
+    port: 5432

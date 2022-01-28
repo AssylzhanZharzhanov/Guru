@@ -6,11 +6,11 @@ import (
 	"time"
 )
 
-type App struct {
+type Server struct {
 	httpServer *http.Server
 }
 
-func (a *App) Run(port string) error {
+func (a *Server) Run(port string) error {
 	a.httpServer = &http.Server{
 		Addr: ":" + port,
 		MaxHeaderBytes: 1 << 20,
@@ -21,6 +21,6 @@ func (a *App) Run(port string) error {
 	return a.httpServer.ListenAndServe()
 }
 
-func (a *App) Shutdown(ctx context.Context) error {
+func (a *Server) Shutdown(ctx context.Context) error {
 	return a.httpServer.Shutdown(ctx)
 }
