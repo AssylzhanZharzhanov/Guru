@@ -9,6 +9,10 @@ type CoursesRepository struct {
 	db *sqlx.DB
 }
 
+func (r *CoursesRepository) GetCourseByID() (model.Course, error) {
+	panic("implement me")
+}
+
 func (r *CoursesRepository) GetCourses() ([]model.Course, error) {
 	panic("implement me")
 }

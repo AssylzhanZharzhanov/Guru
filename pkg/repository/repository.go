@@ -12,6 +12,7 @@ type Authorization interface {
 
 type Courses interface {
 	GetCourses() ([]model.Course, error)
+	GetCourseByID() (model.Course, error)
 }
 
 type Mentors interface {

@@ -34,8 +34,15 @@ CREATE TABLE IF NOT EXISTS mentors (
     created_at timestamp
 );
 
+CREATE TABLE IF NOT EXISTS course_status
+(
+    id SERIAL PRIMARY KEY,
+    name varchar
+);
+
 CREATE TABLE IF NOT EXISTS courses_kk (
     id SERIAL PRIMARY KEY,
+    status_id int references course_status(id),
     mentor_id int,
     category_id int,
     name varchar,
@@ -46,11 +53,13 @@ CREATE TABLE IF NOT EXISTS courses_kk (
     price int DEFAULT 1000,
     views int DEFAULT 0,
     purchases int DEFAULT 0,
+    font varchar,
     created_at timestamp
 );
 
 CREATE TABLE IF NOT EXISTS courses_ru (
     id SERIAL PRIMARY KEY,
+    status_id int references course_status(id),
     mentor_id int,
     category_id int,
     name varchar,
@@ -61,11 +70,13 @@ CREATE TABLE IF NOT EXISTS courses_ru (
     price int DEFAULT 1000,
     views int DEFAULT 0,
     purchases int DEFAULT 0,
+    font varchar,
     created_at timestamp
 );
 
 CREATE TABLE IF NOT EXISTS courses_en (
     id SERIAL PRIMARY KEY,
+    status_id int references course_status(id),
     mentor_id int,
     category_id int,
     name varchar,
@@ -76,6 +87,7 @@ CREATE TABLE IF NOT EXISTS courses_en (
     price int DEFAULT 1000,
     views int DEFAULT 0,
     purchases int DEFAULT 0,
+    font varchar,
     created_at timestamp
 );
 
