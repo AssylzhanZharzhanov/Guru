@@ -7,6 +7,8 @@ require (
 	github.com/coreos/etcd v3.3.10+incompatible // indirect
 	github.com/coreos/go-etcd v2.0.0+incompatible // indirect
 	github.com/gin-gonic/gin v1.7.7 // indirect
+	github.com/jmoiron/sqlx v1.3.4 // indirect
+	github.com/lib/pq v1.10.4 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/spf13/viper v1.10.1 // indirect
 	github.com/swaggo/gin-swagger v1.4.1 // indirect
