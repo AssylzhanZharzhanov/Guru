@@ -1,24 +1,34 @@
 package service
 
-import "gitlab.com/zharzhanov/myguru/pkg/repository"
+import (
+	"gitlab.com/zharzhanov/myguru/model"
+	"gitlab.com/zharzhanov/myguru/pkg/repository"
+)
 
 type Authorization interface {
-	CreateUser() (string, error)
-	GetUser() (string, error)
+	CreateUser(user model.User) (string, error)
 }
 
 type Courses interface {
-	GetCourses()
+	GetCourses() ([]model.Course, error)
+	GetCourseByID() (model.Course, error)
+}
+
+type Mentors interface {
+	GetMentors() ([]model.Mentor, error)
+	GetMentorByID() (model.Mentor, error)
 }
 
 type Service struct {
 	Authorization
 	Courses
+	Mentors
 }
 
 func NewService(repository *repository.Repository) *Service {
 	return &Service{
 		Authorization: NewAuthService(repository.Authorization),
 		Courses: NewCoursesService(repository.Courses),
+		Mentors: NewMentorsService(repository.Mentors),
 	}
 }
