@@ -110,3 +110,23 @@ CREATE TABLE IF NOT EXISTS promocodes (
     expired_date TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO course_status(id, name) VALUES (1, 'active');
+INSERT INTO course_status(id, name) VALUES (2, 'in progress');
+INSERT INTO course_status(id, name) VALUES (3, 'closed');
+
+INSERT INTO categories(id, name) VALUES (1, 'Art');
+INSERT INTO categories(id, name) VALUES (2, 'Food');
+INSERT INTO categories(id, name) VALUES (3, 'Sport');
+INSERT INTO categories(id, name) VALUES (4, 'Space');
+INSERT INTO categories(id, name) VALUES (5, 'Policy');
+
+INSERT INTO mentors(first_name, last_name, info) VALUES ('Neil', 'Armstrong', 'First Moon Visitor');
+INSERT INTO mentors(first_name, last_name, info) VALUES ('K-ZH', 'Tokayev', 'The President');
+
+INSERT INTO courses(status_id, mentor_id, category_id, name, title, description, effect, included_data, font)
+VALUES(1, 1, 4, 'Moon', 'To the Moon and back', 'America was on the moon',
+       'USSR sucks', 'Make Moon Great Again', 'Times Moon Roman');
+INSERT INTO courses(status_id, mentor_id, category_id, name, title, description, effect, included_data, font)
+VALUES(1, 2, 5, 'New Kazakhstan', 'Shal Ket', 'New Kazakhstan is coming',
+       'N1 OUT!', 'Fire!', 'Times KZ Roman');
