@@ -45,18 +45,18 @@ CREATE TABLE IF NOT EXISTS courses (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS videos (
+    id SERIAL PRIMARY KEY NOT NULL UNIQUE,
+    title VARCHAR,
+    description VARCHAR,
+    url VARCHAR,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS programs (
     id SERIAL PRIMARY KEY NOT NULL UNIQUE,
     course_id INT REFERENCES courses,
     video_id INT REFERENCES videos(id)
-);
-
-CREATE TABLE IF NOT EXISTS videos (
-     id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-     title VARCHAR,
-     description VARCHAR,
-     url VARCHAR,
-     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS videos_history (
