@@ -105,6 +105,17 @@ func (r *CoursesRepository) GetCourseByID(id int) (model.Course, error) {
 	course := model.Course{}
 
 	query := fmt.Sprintf(`
+		UPDATE %s 
+		SET views = views + 1
+		WHERE id = $1
+	`, coursesTable)
+
+	_, err := r.db.Exec(query, id)
+	if err != nil {
+		return course, err
+	}
+
+	query = fmt.Sprintf(`
 		SELECT 
 			id,
 			status_id,
