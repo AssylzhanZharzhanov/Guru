@@ -14,6 +14,6 @@ func (s *CategoriesService) GetCategories(lang string) ([]model.Category, error)
 }
 
 func NewCategoriesService(repository repository.Categories) *CategoriesService {
-	return &CategoriesService{}
+	return &CategoriesService{repo: repository}
 }
 
