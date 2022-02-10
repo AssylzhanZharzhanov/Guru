@@ -8,19 +8,7 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS categories_kk
-(
-    id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    name VARCHAR
-);
-
-CREATE TABLE IF NOT EXISTS categories_ru
-(
-    id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    name VARCHAR
-);
-
-CREATE TABLE IF NOT EXISTS categories_en
+CREATE TABLE IF NOT EXISTS categories
 (
     id SERIAL PRIMARY KEY NOT NULL UNIQUE,
     name VARCHAR
@@ -40,45 +28,11 @@ CREATE TABLE IF NOT EXISTS course_status
     name VARCHAR
 );
 
-CREATE TABLE IF NOT EXISTS courses_kk (
+CREATE TABLE IF NOT EXISTS courses (
     id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    status_id INT references course_status(id),
-    mentor_id INT,
-    category_id INT,
-    name VARCHAR,
-    title VARCHAR,
-    description VARCHAR,
-    effect VARCHAR,
-    included_data VARCHAR,
-    price INT DEFAULT 1000,
-    views INT DEFAULT 0,
-    purchases INT DEFAULT 0,
-    font VARCHAR,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-
-CREATE TABLE IF NOT EXISTS courses_ru (
-    id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    status_id INT references course_status(id),
-    mentor_id INT,
-    category_id INT,
-    name VARCHAR,
-    title VARCHAR,
-    description VARCHAR,
-    effect VARCHAR,
-    included_data VARCHAR,
-    price INT DEFAULT 1000,
-    views INT DEFAULT 0,
-    purchases INT DEFAULT 0,
-    font VARCHAR,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    );
-
-CREATE TABLE IF NOT EXISTS courses_en (
-    id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    status_id INT references course_status(id),
-    mentor_id INT,
-    category_id INT,
+    status_id INT REFERENCES course_status(id),
+    mentor_id INT REFERENCES mentors(id),
+    category_id INT REFERENCES categories(id),
     name VARCHAR,
     title VARCHAR,
     description VARCHAR,
@@ -93,40 +47,22 @@ CREATE TABLE IF NOT EXISTS courses_en (
 
 CREATE TABLE IF NOT EXISTS programs (
     id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    course_id INT,
-    video_id INT
-);
-
-CREATE TABLE IF NOT EXISTS chapters_kk (
-    id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    title VARCHAR,
-    description VARCHAR
-);
-
-CREATE TABLE IF NOT EXISTS chapters_ru (
-    id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    title VARCHAR,
-    description VARCHAR
-);
-
-CREATE TABLE IF NOT EXISTS chapters_en (
-    id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    title VARCHAR,
-    description VARCHAR
+    course_id INT REFERENCES courses,
+    video_id INT REFERENCES videos(id)
 );
 
 CREATE TABLE IF NOT EXISTS videos (
-    id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    course_id INT,
-    chapter_id INT,
-    url VARCHAR,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+     id SERIAL PRIMARY KEY NOT NULL UNIQUE,
+     title VARCHAR,
+     description VARCHAR,
+     url VARCHAR,
+     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS video_history (
+CREATE TABLE IF NOT EXISTS videos_history (
     id SERIAL PRIMARY KEY NOT NULL UNIQUE,
-    user_id INT,
-    video_id INT,
+    user_id INT REFERENCES users(id),
+    video_id INT REFERENCES videos(id),
     stop_time INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
