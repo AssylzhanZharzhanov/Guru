@@ -42,10 +42,11 @@ func (h *Handler) getComingSoonCourses(c *gin.Context) {
 	c.JSON(http.StatusOK, courses)
 }
 
-func (h *Handler) getCourse(c *gin.Context) {
+func (h *Handler) getCourseByID(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
+	lang := c.Query("lang")
 
-	course, err := h.service.GetCourseByID(id)
+	course, err := h.service.GetCourseByID(id, lang)
 	if err != nil {
 		newErrorResponse(c, http.StatusNotFound, err.Error())
 		return

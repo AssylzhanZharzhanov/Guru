@@ -101,7 +101,7 @@ func (r *CoursesRepository) GetComingSoonCourses(lang string) ([]model.Course, e
 	return courses, err
 }
 
-func (r *CoursesRepository) GetCourseByID(id int) (model.Course, error) {
+func (r *CoursesRepository) GetCourseByID(id int, lang string) (model.Course, error) {
 	course := model.Course{}
 
 	query := fmt.Sprintf(`

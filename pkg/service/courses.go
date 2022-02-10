@@ -21,8 +21,8 @@ func (s *CoursesService) GetComingSoonCourses(lang string) ([]model.Course, erro
 	return s.repo.GetComingSoonCourses(lang)
 }
 
-func (s *CoursesService) GetCourseByID(id int) (model.Course, error) {
-	return s.repo.GetCourseByID(id)
+func (s *CoursesService) GetCourseByID(id int, lang string) (model.Course, error) {
+	return s.repo.GetCourseByID(id, lang)
 }
 
 func NewCoursesService(repo repository.Courses) *CoursesService {

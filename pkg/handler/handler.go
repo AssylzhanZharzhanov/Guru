@@ -35,7 +35,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			courses.GET("", h.getCourses)
 			courses.GET("/trending", h.getTrendingCourses)
 			courses.GET("/soon", h.getComingSoonCourses)
-			courses.GET("/:id", h.getCourse)
+			courses.GET("/:id", h.getCourseByID)
 
 			videos := courses.Group("")
 			{

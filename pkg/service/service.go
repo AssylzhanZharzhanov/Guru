@@ -13,7 +13,7 @@ type Courses interface {
 	GetCourses(lang string) ([]model.Course, error)
 	GetTrendingCourses(lang string) ([]model.Course, error)
 	GetComingSoonCourses(lang string) ([]model.Course, error)
-	GetCourseByID(id int) (model.Course, error)
+	GetCourseByID(id int, lang string) (model.Course, error)
 }
 
 type Mentors interface {
