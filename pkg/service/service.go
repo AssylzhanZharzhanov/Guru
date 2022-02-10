@@ -21,8 +21,13 @@ type Mentors interface {
 	GetMentorByID(id int) (model.Mentor, error)
 }
 
+type Categories interface {
+	GetCategories(lang string) ([]model.Category, error)
+}
+
 type Service struct {
 	Authorization
+	Categories
 	Courses
 	Mentors
 }
@@ -30,6 +35,7 @@ type Service struct {
 func NewService(repository *repository.Repository) *Service {
 	return &Service{
 		Authorization: NewAuthService(repository.Authorization),
+		Categories: NewCategoriesService(repository.Categories),
 		Courses: NewCoursesService(repository.Courses),
 		Mentors: NewMentorsService(repository.Mentors),
 	}
