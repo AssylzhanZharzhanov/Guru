@@ -13,7 +13,7 @@ func (m MentorsRepository) GetMentors() ([]model.Mentor, error) {
 	panic("implement me")
 }
 
-func (m MentorsRepository) GetMentorByID() (model.Mentor, error) {
+func (m MentorsRepository) GetMentorByID(id int) (model.Mentor, error) {
 	panic("implement me")
 }
 

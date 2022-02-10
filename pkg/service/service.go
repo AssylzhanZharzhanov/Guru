@@ -11,12 +11,14 @@ type Authorization interface {
 
 type Courses interface {
 	GetCourses() ([]model.Course, error)
-	GetCourseByID() (model.Course, error)
+	GetTrendingCourses() ([]model.Course, error)
+	GetComingSoonCourses() ([]model.Course, error)
+	GetCourseByID(id int) (model.Course, error)
 }
 
 type Mentors interface {
 	GetMentors() ([]model.Mentor, error)
-	GetMentorByID() (model.Mentor, error)
+	GetMentorByID(id int) (model.Mentor, error)
 }
 
 type Service struct {

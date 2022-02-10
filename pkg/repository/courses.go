@@ -9,11 +9,19 @@ type CoursesRepository struct {
 	db *sqlx.DB
 }
 
-func (r *CoursesRepository) GetCourseByID() (model.Course, error) {
+func (r *CoursesRepository) GetTrendingCourses() ([]model.Course, error) {
+	panic("implement me")
+}
+
+func (r *CoursesRepository) GetComingSoonCourses() ([]model.Course, error) {
 	panic("implement me")
 }
 
 func (r *CoursesRepository) GetCourses() ([]model.Course, error) {
+	panic("implement me")
+}
+
+func (r *CoursesRepository) GetCourseByID(id int) (model.Course, error) {
 	panic("implement me")
 }
 

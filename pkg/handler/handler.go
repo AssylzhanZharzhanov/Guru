@@ -36,12 +36,27 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			courses.GET("/trending", h.getTrendingCourses)
 			courses.GET("/soon", h.getComingSoonCourses)
 			courses.GET("/:id", h.getCourse)
+
+			videos := courses.Group("/:courseId/")
+			{
+				videos.GET("", h.getVideos)
+			}
 		}
 
 		mentors := api.Group("/mentors")
 		{
 			mentors.GET("", h.getMentors)
 			mentors.GET("/:id", h.getMentor)
+		}
+
+		categories := api.Group("/categories")
+		{
+			categories.GET("", h.getCategories)
+		}
+
+		users := api.Group("/users")
+		{
+			users.GET("/:id", h.getUserByID)
 		}
 	}
 

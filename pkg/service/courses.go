@@ -13,8 +13,16 @@ func (s *CoursesService) GetCourses() ([]model.Course, error) {
 	return s.repo.GetCourses()
 }
 
-func (s *CoursesService) GetCourseByID() (model.Course, error) {
-	panic("implement me")
+func (s *CoursesService) GetTrendingCourses() ([]model.Course, error) {
+	return s.repo.GetTrendingCourses()
+}
+
+func (s *CoursesService) GetComingSoonCourses() ([]model.Course, error) {
+	return s.repo.GetComingSoonCourses()
+}
+
+func (s *CoursesService) GetCourseByID(id int) (model.Course, error) {
+	return s.repo.GetCourseByID(id)
 }
 
 func NewCoursesService(repo repository.Courses) *CoursesService {

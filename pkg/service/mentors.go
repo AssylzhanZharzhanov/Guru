@@ -9,12 +9,12 @@ type MentorsService struct {
 	repo repository.Mentors
 }
 
-func (m MentorsService) GetMentors() ([]model.Mentor, error) {
-	panic("implement me")
+func (s *MentorsService) GetMentors() ([]model.Mentor, error) {
+	return s.repo.GetMentors()
 }
 
-func (m MentorsService) GetMentorByID() (model.Mentor, error) {
-	panic("implement me")
+func (s *MentorsService) GetMentorByID(id int) (model.Mentor, error) {
+	return s.repo.GetMentorByID(id)
 }
 
 func NewMentorsService(repo repository.Mentors) *MentorsService {
