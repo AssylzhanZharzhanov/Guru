@@ -25,6 +25,8 @@ func main(){
 		log.Fatalf("Error in reading env file: %s", err.Error())
 	}
 
+	port := viper.GetString("server.port")
+
 	db, err := postgres.NewPostgresDB(postgres.Config{
 		Host: viper.GetString("database.host"),
 		Port: viper.GetString("database.port"),
@@ -33,7 +35,6 @@ func main(){
 		DBName: viper.GetString("database.name"),
 		SSLMode: viper.GetString("database.ssl_mode"),
 	})
-
 	if err != nil {
 		log.Fatalf("Error in starting database: %s", err.Error())
 	}
@@ -42,7 +43,6 @@ func main(){
 	services := service.NewService(repos)
 	handlers := handler.NewHandler(services)
 
-	port := viper.GetString("server.port")
 	go func() {
 		if err := srv.Run(port, handlers.InitRoutes()); err != nil {
 			log.Fatalf("Error in starting server: %s", err.Error())
