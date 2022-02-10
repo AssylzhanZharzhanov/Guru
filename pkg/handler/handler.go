@@ -46,7 +46,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		mentors := api.Group("/mentors")
 		{
 			mentors.GET("", h.getMentors)
-			mentors.GET("/:id", h.getMentor)
+			mentors.GET("/:id", h.getMentorByID)
 		}
 
 		categories := api.Group("/categories")
