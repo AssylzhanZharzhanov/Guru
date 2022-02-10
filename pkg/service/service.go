@@ -10,9 +10,9 @@ type Authorization interface {
 }
 
 type Courses interface {
-	GetCourses() ([]model.Course, error)
-	GetTrendingCourses() ([]model.Course, error)
-	GetComingSoonCourses() ([]model.Course, error)
+	GetCourses(lang string) ([]model.Course, error)
+	GetTrendingCourses(lang string) ([]model.Course, error)
+	GetComingSoonCourses(lang string) ([]model.Course, error)
 	GetCourseByID(id int) (model.Course, error)
 }
 

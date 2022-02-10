@@ -9,16 +9,16 @@ type CoursesService struct {
 	repo repository.Courses
 }
 
-func (s *CoursesService) GetCourses() ([]model.Course, error) {
-	return s.repo.GetCourses()
+func (s *CoursesService) GetCourses(lang string) ([]model.Course, error) {
+	return s.repo.GetCourses(lang)
 }
 
-func (s *CoursesService) GetTrendingCourses() ([]model.Course, error) {
-	return s.repo.GetTrendingCourses()
+func (s *CoursesService) GetTrendingCourses(lang string) ([]model.Course, error) {
+	return s.repo.GetTrendingCourses(lang)
 }
 
-func (s *CoursesService) GetComingSoonCourses() ([]model.Course, error) {
-	return s.repo.GetComingSoonCourses()
+func (s *CoursesService) GetComingSoonCourses(lang string) ([]model.Course, error) {
+	return s.repo.GetComingSoonCourses(lang)
 }
 
 func (s *CoursesService) GetCourseByID(id int) (model.Course, error) {

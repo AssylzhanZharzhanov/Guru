@@ -7,7 +7,9 @@ import (
 )
 
 func (h *Handler) getCourses(c *gin.Context) {
-	courses, err := h.service.GetCourses()
+	lang := c.Query("lang")
+	
+	courses, err := h.service.GetCourses(lang)
 	if err != nil {
 		newErrorResponse(c, http.StatusNotFound, err.Error())
 		return
@@ -17,7 +19,9 @@ func (h *Handler) getCourses(c *gin.Context) {
 }
 
 func (h *Handler) getTrendingCourses(c *gin.Context) {
-	courses, err := h.service.GetTrendingCourses()
+	lang := c.Query("lang")
+
+	courses, err := h.service.GetTrendingCourses(lang)
 	if err != nil {
 		newErrorResponse(c, http.StatusNotFound, err.Error())
 		return
@@ -27,7 +31,9 @@ func (h *Handler) getTrendingCourses(c *gin.Context) {
 }
 
 func (h *Handler) getComingSoonCourses(c *gin.Context) {
-	courses, err := h.service.GetComingSoonCourses()
+	lang := c.Query("lang")
+
+	courses, err := h.service.GetComingSoonCourses(lang)
 	if err != nil {
 		newErrorResponse(c, http.StatusNotFound, err.Error())
 		return

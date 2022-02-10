@@ -10,11 +10,26 @@ type CoursesRepository struct {
 	db *sqlx.DB
 }
 
-func (r *CoursesRepository) GetCourses() ([]model.Course, error) {
+func (r *CoursesRepository) GetCourses(lang string) ([]model.Course, error) {
 	courses := make([]model.Course, 0)
 
 	query := fmt.Sprintf(`
-		SELECT * FROM %s
+		SELECT
+			id,
+			status_id,
+			mentor_id,
+			category_id,
+			name,
+			title,
+			description,
+			effect,
+			included_data,
+			price,
+			views,
+			purchases,
+			created_at
+		FROM %s
+		ORDER BY views DESC
 	`, coursesTable)
 
 	err := r.db.Select(&courses, query)
@@ -25,11 +40,11 @@ func (r *CoursesRepository) GetCourses() ([]model.Course, error) {
 	return courses, err
 }
 
-func (r *CoursesRepository) GetTrendingCourses() ([]model.Course, error) {
+func (r *CoursesRepository) GetTrendingCourses(lang string) ([]model.Course, error) {
 	panic("implement me")
 }
 
-func (r *CoursesRepository) GetComingSoonCourses() ([]model.Course, error) {
+func (r *CoursesRepository) GetComingSoonCourses(lang string) ([]model.Course, error) {
 	panic("implement me")
 }
 
