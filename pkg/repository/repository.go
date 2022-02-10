@@ -17,6 +17,10 @@ type Authorization interface {
 	GetUser(user model.User) (string, error)
 }
 
+type Categories interface {
+	GetCategories(lang string) ([]model.Category, error)
+}
+
 type Courses interface {
 	GetCourses(lang string) ([]model.Course, error)
 	GetTrendingCourses(lang string) ([]model.Course, error)
@@ -29,9 +33,6 @@ type Mentors interface {
 	GetMentorByID(id int) (model.Mentor, error)
 }
 
-type Categories interface {
-	GetCategories(lang string) ([]model.Category, error)
-}
 
 type Repository struct {
 	Authorization

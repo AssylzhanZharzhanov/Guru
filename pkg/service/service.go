@@ -9,6 +9,10 @@ type Authorization interface {
 	CreateUser(user model.User) (string, error)
 }
 
+type Categories interface {
+	GetCategories(lang string) ([]model.Category, error)
+}
+
 type Courses interface {
 	GetCourses(lang string) ([]model.Course, error)
 	GetTrendingCourses(lang string) ([]model.Course, error)
@@ -19,10 +23,6 @@ type Courses interface {
 type Mentors interface {
 	GetMentors() ([]model.Mentor, error)
 	GetMentorByID(id int) (model.Mentor, error)
-}
-
-type Categories interface {
-	GetCategories(lang string) ([]model.Category, error)
 }
 
 type Service struct {
