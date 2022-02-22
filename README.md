@@ -1,7 +1,14 @@
 # Guru
 
-Guru
+## Quick setup
 
-## Getting started
+Для запуска приложения:
+```
+    make build && make run
+```
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Если приложение запускается впервые, необходимо применить миграции к базе данных:
+```
+    make migrate-up
+```
+##
